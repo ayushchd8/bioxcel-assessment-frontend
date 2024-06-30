@@ -73,6 +73,26 @@ const RelationshipList = (props) => {
         }
     ];
 
+    useEffect(() => {
+        if (cyInstance) {
+            cyInstance.ready(() => {
+                const boundingBox = cyInstance.elements().boundingBox();
+                const graphWidth = boundingBox.w;
+                const graphHeight = boundingBox.h;
+
+                const containerWidth = cyInstance.container().clientWidth;
+                const containerHeight = cyInstance.container().clientHeight;
+
+                const zoomLevel = Math.min(containerWidth / graphWidth, containerHeight / graphHeight) * 0.5;
+                const panX = (containerWidth - graphWidth * zoomLevel) ;
+                const panY = (containerHeight - graphHeight * zoomLevel) ;
+
+                cyInstance.zoom(zoomLevel);
+                cyInstance.pan({ x: panX, y: panY });
+            });
+        }
+    }, [cyInstance, elements]);
+
     return (
         <div className="cyto-container">
             <h3>Simplified Relation Graph</h3>
