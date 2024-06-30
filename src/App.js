@@ -1,9 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import RelationshipList from './components/RelationshipList';
-// import ChildNodes from './components/ChildNodes';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import RelationshipGraph from './components/RelationshipGraph';
-// import './App.css';
 
 function App() {
     return (
@@ -11,7 +8,8 @@ function App() {
         <h1>Relationship Graph</h1>
         <Router>
             <Routes>
-                <Route path="/" element={<RelationshipGraph />} />
+                <Route path="/" element={<Navigate to="/relationship-graph" />} />
+                <Route path="/relationship-graph" default element={<RelationshipGraph />} />
             </Routes>
         </Router>
       </div>

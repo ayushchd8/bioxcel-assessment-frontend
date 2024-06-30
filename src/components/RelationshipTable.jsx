@@ -1,4 +1,3 @@
-// src/components/RelationshipTable.js
 import React from 'react';
 
 const RelationshipTable = ({ data }) => {

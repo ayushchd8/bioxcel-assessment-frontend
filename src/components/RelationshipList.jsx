@@ -1,4 +1,3 @@
-// src/components/SimplifiedGraph.js
 import React, { useEffect, useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import axios from 'axios';

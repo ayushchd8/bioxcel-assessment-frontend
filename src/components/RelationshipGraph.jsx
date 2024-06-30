@@ -1,11 +1,10 @@
-// src/components/RelationshipGraph.js
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import CytoscapeComponent from 'react-cytoscapejs';
 import RelationshipTable from './RelationshipTable';
-import '../App.css'; // Make sure to import the CSS file
+import '../App.css';
 import RelationshipList from './RelationshipList';
-import { Audio } from 'react-loader-spinner'
+import { Audio } from 'react-loader-spinner';
 
 const RelationshipGraph = () => {
     const [elements, setElements] = useState([]);
@@ -127,13 +126,15 @@ const RelationshipGraph = () => {
 
     const handleZoomIn = () => {
         if (cyRef.current) {
-            cyRef.current.zoom(cyRef.current.zoom() + 0.2);
+            const zoomLevel = cyRef.current.zoom();
+            cyRef.current.zoom(zoomLevel + 0.2);
         }
     };
 
     const handleZoomOut = () => {
         if (cyRef.current) {
-            cyRef.current.zoom(cyRef.current.zoom() - 0.2);
+            const zoomLevel = cyRef.current.zoom();
+            cyRef.current.zoom(zoomLevel - 0.2);
         }
     };
 
@@ -147,8 +148,6 @@ const RelationshipGraph = () => {
                     {viewMode === 'table' ? 'Show Graph' : 'Show Table'}
                 </button>
             </div>
-            <button onClick={handleZoomIn}>Zoom In</button>
-                <button onClick={handleZoomOut}>Zoom Out</button>
             {loading ? (
                 <div className="loader-container">
                     <Audio type="ThreeDots" color="#00BFFF" height={80} width={80} />
@@ -159,14 +158,20 @@ const RelationshipGraph = () => {
                 <RelationshipTable data={rawData} />
             ) : (
                 <div className="cyto-container">
-                    <h3>Detailed Relation Graph</h3>
+                    <div style={{display:'flex', justifyContent:'space-between'}}>
+                        <h3>Detailed Relation Graph</h3>
+                        <div style={{display:'flex', marginTop:'5px', marginRight:'5px'}}>
+                            <button onClick={handleZoomIn} style={{cursor:'pointer'}}>+ Zoom In</button>
+                            <button onClick={handleZoomOut} style={{cursor:'pointer', marginLeft:'5px'}}>- Zoom Out</button>
+                        </div>
+                    </div>
+                    
                     <CytoscapeComponent
                         elements={CytoscapeComponent.normalizeElements(elements)}
                         style={{ width: '100%', height: '100%' }}
                         cy={(cy) => {
-                            if (cy) {
-                                cy.on('tap', 'node', handleNodeClick);
-                            }
+                            cyRef.current = cy;
+                            cy.on('tap', 'node', handleNodeClick);
                         }}
                         layout={layout}
                         stylesheet={style}
