@@ -34,7 +34,6 @@ yarn start
 Project Structure
 src/
 components/ - Contains React components like RelationshipGraph, SimplifiedGraph, DataTable, etc.
-services/ - Contains API service functions for fetching data from the backend.
 App.js - The main application component.
 index.js - The entry point of the React application.
 Available Scripts
