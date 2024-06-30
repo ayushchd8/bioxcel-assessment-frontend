@@ -69,4 +69,4 @@ API Integration: Fetch data from the Django backend API.
 Loader: Show a loader when fetching data from the API.
 Zoom Controls: Provide buttons to zoom in and out in the graph.
 
-Note: While Looking at Simplified Graph, Please drag the Graph from the top left corner by cliking anywhere and dragging to the center. It is the default size of the graph which the issue of the library we are using here.
+Note: The Graph can we dragged from one position to another and can be zoom in and zoom out.
