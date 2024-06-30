@@ -1,0 +1,66 @@
+/* src/App.css */
+
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; /* Prevents scrolling of the whole page */
+}
+
+.cyto-container {
+  width: 90%;
+  height: 90%;
+  border: 1px solid black;
+}
+
+.cta-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* Adjust as per your header/footer height */
+}
+
+.table-container {
+  width: 90%;
+  height: 90%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevents scrolling of the whole container */
+}
+
+.table-wrapper {
+  flex: 1;
+  overflow-y: auto; /* Makes the table body scrollable */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+th {
+  background-color: #f2f2f2;
+  position: sticky; /* Make header sticky */
+  top: 0; /* Stick header to the top */
+  z-index: 2; /* Ensure header is above table content */
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5; /* Highlight row on hover */
+}
